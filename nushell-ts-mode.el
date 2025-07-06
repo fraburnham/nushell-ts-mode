@@ -175,36 +175,31 @@ Provides completion suggestions at the current point."
 
 (defvar nushell-ts-mode--indent-rules
   `((nu
-     ;; If the current node is any closing bracket, the indentation should be at
-     ;; the beginning of the line
-     ((node-is ")") parent-bol 0)
-     ((node-is "]") parent-bol 0)
-     ((node-is "}") parent-bol 0)
+      ;; If the current node is any closing bracket, the indentation should be at
+      ;; the beginning of the line
+      ((node-is ")") parent-bol 0)
+      ((node-is "]") parent-bol 0)
+      ((node-is "}") parent-bol 0)
 
-     ;; For nodes within a block, the indentation should be at the beginning of
-     ;; the line plus the offset value defined in
-     ;; 'nushell-ts-mode-indent-offset'
-     ((parent-is "block") parent-bol nushell-ts-mode-indent-offset)
+      ;; Define indentation rules for expressions enclosed in parentheses
+      ((parent-is "expr_parenthesized") parent-bol nushell-ts-mode-indent-offset)
 
-     ;; Similar to blocks, for nodes within a string, the indentation should be
-     ;; at the beginning of the line plus the offset value
-     ((parent-is "string") parent-bol nushell-ts-mode-indent-offset)
+      ;; Define indentation rules for list values
+      ((parent-is "list_body") parent-bol nushell-ts-mode-indent-offset)
 
-     ;; Define indentation rules for array elements
-     ((parent-is "array") parent-bol nushell-ts-mode-indent-offset)
+      ;; Define indentation rules for record values
+      ((parent-is "record_body") parent-bol nushell-ts-mode-indent-offset)
 
-     ;; Define indentation rules for list values
-     ((parent-is "val_list") parent-bol nushell-ts-mode-indent-offset)
+      ;; Define indentation rules for closure values
+      ((parent-is "val_closure") parent-bol nushell-ts-mode-indent-offset)
 
-     ;; Define indentation rules for expressions enclosed in parentheses
-     ((parent-is "expr_parenthesized") parent-bol nushell-ts-mode-indent-offset)
+      ;; Define indentation rules for parameters enclosed in brackets
+      ((parent-is "parameter_bracks") parent-bol nushell-ts-mode-indent-offset)
 
-     ;; Define indentation rules for parameters enclosed in brackets
-     ((parent-is "parameter_bracks") parent-bol nushell-ts-mode-indent-offset)
-
-     ;; If there is no node, the indentation should be at the beginning of the
-     ;; line
-     (no-node parent-bol 0))))
+      ;; For nodes within a block, the indentation should be at the beginning of
+      ;; the line plus the offset value defined in
+      ;; 'nushell-ts-mode-indent-offset'
+      ((parent-is "block") parent-bol nushell-ts-mode-indent-offset))))
 
 (defun nushell-ts-mode--defun-name (node)
   "Return the defun name of NODE.

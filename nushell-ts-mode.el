@@ -87,7 +87,16 @@
     "def"
     "let"
     "mut"
-    "source"))
+    "source"
+    "export"
+    "if"
+    "else"
+    "try"
+    "catch"
+    "match"
+    "return"
+    "true"
+    "false"))
 
 (defvar nushell-ts-mode--types
   '("any"

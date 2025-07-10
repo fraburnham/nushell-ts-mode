@@ -180,6 +180,7 @@ Provides completion suggestions at the current point."
       ((node-is ")") parent-bol 0)
       ((node-is "]") parent-bol 0)
       ((node-is "}") parent-bol 0)
+      ((node-is "|") parent-bol 0)
 
       ;; Define indentation rules for expressions enclosed in parentheses
       ((parent-is "expr_parenthesized") parent-bol nushell-ts-mode-indent-offset)

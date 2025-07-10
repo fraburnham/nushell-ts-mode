@@ -232,7 +232,12 @@ Return nil if there is no name or if NODE is not a defun node."
   (treesit-font-lock-rules
    :language 'nu
    :feature 'property
-   '((record_entry (identifier) @font-lock-property-name-face))
+   '((record_entry (identifier) @font-lock-property-name-face)
+     (collection_type (identifier) @font-lock-property-name-face)
+     (param_long_flag) @font-lock-property-name-face
+     (long_flag) @font-lock-property-name-face
+     (param_short_flag) @font-lock-property-name-face
+     (short_flag) @font-lock-property-name-face)
 
    :language 'nu
    :feature 'comment

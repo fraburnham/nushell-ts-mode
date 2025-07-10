@@ -242,7 +242,8 @@ Return nil if there is no name or if NODE is not a defun node."
    :language 'nu
    :feature 'function
    '((command (cmd_identifier) @font-lock-function-call-face)
-     (decl_alias (cmd_identifier) @font-lock-function-call-face))
+     (decl_alias (cmd_identifier) @font-lock-function-call-face)
+     (where_command ("where") @font-lock-function-call-face))
 
    :language 'nu
    :feature 'keyword

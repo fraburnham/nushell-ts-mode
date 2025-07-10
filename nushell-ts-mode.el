@@ -112,6 +112,7 @@
     "int"
     "list"
     "math"
+    "nothing"
     "number"
     "operator"
     "path"

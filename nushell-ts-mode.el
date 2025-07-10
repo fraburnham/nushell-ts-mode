@@ -191,6 +191,8 @@ Provides completion suggestions at the current point."
       ;; Define indentation rules for record values
       ((parent-is "record_body") parent-bol nushell-ts-mode-indent-offset)
 
+      ((parent-is "ctrl_match") parent-bol nushell-ts-mode-indent-offset)
+
       ;; Define indentation rules for closure values
       ((parent-is "val_closure") parent-bol nushell-ts-mode-indent-offset)
 

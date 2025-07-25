@@ -209,6 +209,8 @@ Provides completion suggestions at the current point."
       ;; Define indentation rules for parameters enclosed in brackets
       ((parent-is "parameter_bracks") parent-bol nushell-ts-mode-indent-offset)
 
+      ((parent-is "ctrl_match") parent-bol nushell-ts-mode-indent-offset)
+
       ;; For nodes within a block, the indentation should be at the beginning of
       ;; the line plus the offset value defined in
       ;; 'nushell-ts-mode-indent-offset'
